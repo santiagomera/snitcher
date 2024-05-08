@@ -10,7 +10,7 @@ PREFIX="${PREFIX:-unified}"
 working_file="$PREFIX.working"
 
 # yyyy-mm-dd
-local now="$(date -Iseconds -u) UTC"
+local NOW="$(date -u +%F' '%T) UTC"
 
 # Fetch the entries, filter the good ones, chunk into 200k pieces
 # due to a limitation in Little Snitch rule group size
@@ -33,7 +33,7 @@ for part in part-*; do
 {
   "name" : "$NAME (part $part_num)",
   "description" : "Generated from $URL",
-  "denied-remote-notes" : "Retrieved on $NOW from list $NAME",
+  "denied-remote-notes" : "Retrieved on $NOW from list '$NAME'",
   "denied-remote-hosts" : [
 $hosts
   ]
